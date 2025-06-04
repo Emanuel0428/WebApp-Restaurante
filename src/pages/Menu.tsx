@@ -17,7 +17,7 @@ interface Product {
   price: number;
   category: string;
   ingredients: any[];
-  image?: string;
+  image: string | undefined;
   malFormateado?: boolean;
   precios_por_tamano?: { [key: string]: number };
 }
@@ -52,17 +52,17 @@ const CustomNextArrow = (props: any) => {
 };
 
 // Importa todas las imágenes de la carpeta pizzas
-const pizzaImages = import.meta.glob('../assets/pizzas/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+const pizzaImages = import.meta.glob('../assets/pizzas/*.{jpg,png,jpeg,webp}', { eager: true, query: '?url', import: 'default' });
 // Importa todas las imágenes de la carpeta entradas
-const entradasImages = import.meta.glob('../assets/entradas/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+const entradasImages = import.meta.glob('../assets/entradas/*.{jpg,png,jpeg,webp}', { eager: true, query: '?url', import: 'default' });
 // Importa todas las imágenes de la carpeta bebidas
-const bebidasImages = import.meta.glob('../assets/bebidas/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+const bebidasImages = import.meta.glob('../assets/bebidas/*.{jpg,png,jpeg,webp}', { eager: true, query: '?url', import: 'default' });
 
 // Imágenes por defecto para cada categoría
-const defaultImages = {
-  pizza: pizzaImage,
-  entrada: entradasImages['../assets/entradas/pan-ajo.jpg'] || pizzaImage,
-  bebida: bebidasImages['../assets/cocacola.jpg'] || pizzaImage
+const defaultImages: { [key: string]: string } = {
+  pizza: pizzaImage as string,
+  entrada: (entradasImages['../assets/entradas/pan-ajo.jpg'] as string) || pizzaImage as string,
+  bebida: (bebidasImages['../assets/cocacola.jpg'] as string) || pizzaImage as string
 };
 
 // Modal reutilizable para agregar productos al carrito
@@ -226,19 +226,19 @@ const Menu = () => {
               malFormateado = true;
               console.error('Ingrediente mal formateado en producto:', item.nombre, item.ingredientes);
             }
-            let image = defaultImages[item.tipo as keyof typeof defaultImages] || pizzaImage;
+            let image: string = defaultImages[item.tipo as keyof typeof defaultImages] || pizzaImage;
             // Si la imagen es una URL pública (de Supabase Storage), úsala directamente
             if (item.imagen && typeof item.imagen === 'string' && item.imagen.startsWith('http')) {
               image = item.imagen;
             } else if (item.tipo === 'pizza') {
               const imagePath = `../assets/pizzas/${item.imagen}`;
-              image = item.imagen && pizzaImages[imagePath] ? pizzaImages[imagePath] : defaultImages.pizza;
+              image = item.imagen && pizzaImages[imagePath] ? (pizzaImages[imagePath] as string) : defaultImages.pizza;
             } else if (item.tipo === 'entrada') {
               const imagePath = `../assets/entradas/${item.imagen}`;
-              image = item.imagen && entradasImages[imagePath] ? entradasImages[imagePath] : defaultImages.entrada;
+              image = item.imagen && entradasImages[imagePath] ? (entradasImages[imagePath] as string) : defaultImages.entrada;
             } else if (item.tipo === 'bebida') {
               const imagePath = `../assets/bebidas/${item.imagen}`;
-              image = item.imagen && bebidasImages[imagePath] ? bebidasImages[imagePath] : defaultImages.bebida;
+              image = item.imagen && bebidasImages[imagePath] ? (bebidasImages[imagePath] as string) : defaultImages.bebida;
             }
 
             // Asegurarnos de que el precio sea un número válido
