@@ -4,7 +4,7 @@ import {
   fetchIngredients,
   fetchInventory,
   upsertInventory,
-} from '../lib/supabase-functions';
+} from '../../lib/supabase-functions';
 
 interface Ingredient {
   id_ingrediente: string;

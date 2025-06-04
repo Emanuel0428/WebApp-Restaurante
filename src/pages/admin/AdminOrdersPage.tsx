@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabase";
-import AdminHeader from "../pages/AdminHeader"; // Importa el componente AdminHeader
+import { supabase } from "../../lib/supabase";
+import AdminHeader from "./AdminHeader";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
