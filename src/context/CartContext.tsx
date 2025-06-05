@@ -8,6 +8,7 @@ export interface CartItem {
   quantity: number;
   size: string;
   removedIngredients?: string[];
+  detalles_personalizados?: string;
 }
 
 interface CartContextType {

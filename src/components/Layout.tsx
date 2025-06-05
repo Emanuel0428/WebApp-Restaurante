@@ -9,6 +9,7 @@ const Layout: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [userName, setUserName] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const { cart } = useCart();
   const totalCartItems = cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
@@ -23,42 +24,59 @@ const Layout: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Escuchar cambios de sesión para mostrar el ícono correcto
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsLogged(!!session?.user);
-    });
-    // Chequeo inicial
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      setIsLogged(!!user);
-    });
-    return () => {
-      listener?.subscription.unsubscribe();
-    };
-  }, []);
+    let mounted = true;
 
-  useEffect(() => {
-    const fetchUserName = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error) {
-        console.error('Error fetching user:', error);
-        setUserName(null);
-      } else {
-        const { data: profile, error: profileError } = await supabase
-          .from('usuario')
-          .select('nombre')
-          .eq('email', user?.email)
-          .single();
-
-        if (profileError) {
-          console.error('Error fetching profile:', profileError);
-          setUserName('Usuario');
-        } else {
-          setUserName(profile?.nombre || 'Usuario');
+    const initializeAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (mounted) {
+          setIsLogged(!!session);
+          if (session?.user) {
+            const { data: profile } = await supabase
+              .from('usuario')
+              .select('nombre')
+              .eq('email', session.user.email)
+              .single();
+            
+            if (mounted) {
+              setUserName(profile?.nombre || 'Usuario');
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error initializing auth:', error);
+      } finally {
+        if (mounted) {
+          setIsLoading(false);
         }
       }
     };
 
-    fetchUserName();
+    const authListener = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (mounted) {
+        setIsLogged(!!session);
+        if (session?.user) {
+          const { data: profile } = await supabase
+            .from('usuario')
+            .select('nombre')
+            .eq('email', session.user.email)
+            .single();
+          
+          if (mounted) {
+            setUserName(profile?.nombre || 'Usuario');
+          }
+        } else {
+          setUserName(null);
+        }
+      }
+    });
+
+    initializeAuth();
+
+    return () => {
+      mounted = false;
+      authListener.data.subscription.unsubscribe();
+    };
   }, []);
 
   const isProfilePage = location.pathname === '/profile'; // Verificar si estamos en la página de perfil
