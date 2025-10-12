@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import AdminHeader from './AdminHeader';
-import { insertCashMovement, getAllCashMovements } from '../lib/supabase-functions';
+import { insertCashMovement, getAllCashMovements } from '../../lib/supabase-functions';
 
 interface Pedido {
   id_order: string;

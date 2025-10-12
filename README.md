@@ -1,120 +1,108 @@
 # Bigotes Pizzería Artesanal Alemana 🍕
 
-Bienvenido al repositorio de **Bigotes Pizzería Artesanal Alemana**, una aplicación web diseñada para mostrar el menú, la historia y los servicios de una pizzería artesanal con un toque alemán. Este proyecto está construido con **React** y **Tailwind CSS**, ofreciendo un diseño moderno y responsivo.
+Bienvenido al repositorio de **Bigotes Pizzería Artesanal Alemana**, una aplicación web moderna construida con **React**, **TypeScript**, **Vite** y **Tailwind CSS**. Esta aplicación ofrece una experiencia de usuario fluida para explorar nuestro menú, realizar pedidos y conocer más sobre nuestra pizzería artesanal con un toque alemán.
 
-## 📖 Descripción del Proyecto
+## 🌟 Características Principales
 
-Bigotes Pizzería es una aplicación web que permite a los usuarios:
-- Explorar el menú de pizzas artesanales.
-- Conocer la historia y la pasión detrás de la pizzería.
-- Ver una galería de imágenes y un video sobre el arte de hacer pizzas.
-- Contactar al restaurante a través de un formulario y encontrar su ubicación en un mapa.
+- **Menú Interactivo**: Explora nuestras categorías de productos (Entradas, Platos Fuertes, Bebidas)
+- **Personalización de Pedidos**: Sistema intuitivo para personalizar cada producto
+- **Carrito de Compras**: Gestión eficiente de pedidos con contexto global
+- **Diseño Responsivo**: Experiencia optimizada para dispositivos móviles y escritorio
+- **Base de Datos en Tiempo Real**: Integración con Supabase para gestión de productos
+- **Interfaz Moderna**: Diseño elegante con Tailwind CSS y animaciones suaves
 
-El proyecto incluye:
-- Un diseño responsivo con modo claro y oscuro.
-- Componentes reutilizables como un header sticky, un carrusel de imágenes y un formulario de contacto.
-- Integración de Google Fonts (Roboto y Lobster) para un estilo tipográfico único.
-- Un video embebido de YouTube para mostrar el proceso de creación de pizzas.
+## 🛠️ Tecnologías Utilizadas
+
+- **Frontend**:
+  - React 18
+  - TypeScript
+  - Vite
+  - Tailwind CSS
+  - React Router DOM
+  - React Slick
+- **Backend**:
+  - Supabase (Base de datos y autenticación)
+- **Herramientas de Desarrollo**:
+  - ESLint
+  - Prettier
+  - TypeScript
 
 ## 📋 Requisitos Previos
 
-Antes de ejecutar el proyecto, asegúrate de tener instalado lo siguiente:
+- Node.js (versión 16 o superior)
+- npm o yarn
+- Git
 
-- **Node.js** (versión 16 o superior): Descárgalo desde [nodejs.org](https://nodejs.org/).
-- **npm** o **yarn**: npm viene con Node.js, pero puedes instalar yarn con `npm install -g yarn` si lo prefieres.
-- **Git**: Para clonar el repositorio. Descárgalo desde [git-scm.com](https://git-scm.com/).
+## 🚀 Instalación y Configuración
 
-## 🚀 Instalación
-
-Sigue estos pasos para instalar y ejecutar el proyecto localmente:
-
-1. **Clona el repositorio**:
+1. **Clonar el Repositorio**:
    ```bash
-   git clone https://github.com/FedericoChalaca/Bigotes-pizzeria.git
-Navega al directorio del proyecto:
-bash
+   git clone [URL_DEL_REPOSITORIO]
+   cd WebApp-Restaurante
+   ```
 
-Contraer
+2. **Instalar Dependencias**:
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
 
-Ajuste
+3. **Configurar Variables de Entorno**:
+   - Crea un archivo `.env` en la raíz del proyecto
+   - Añade las variables necesarias para Supabase:
+     ```env
+     VITE_SUPABASE_URL=tu_url_de_supabase
+     VITE_SUPABASE_ANON_KEY=tu_clave_anonima
+     ```
 
-Copiar
-cd Bigotes-pizzeria
-Instala las dependencias:
-Si usas npm:
-bash
+4. **Iniciar el Servidor de Desarrollo**:
+   ```bash
+   npm run dev
+   # o
+   yarn dev
+   ```
 
-Contraer
+## 📁 Estructura del Proyecto
 
-Ajuste
+```
+WebApp-Restaurante/
+├── src/
+│   ├── assets/         # Imágenes y recursos estáticos
+│   ├── components/     # Componentes reutilizables
+│   ├── context/       # Contextos de React (ej: CartContext)
+│   ├── lib/           # Configuraciones y utilidades
+│   ├── pages/         # Componentes de página
+│   └── App.tsx        # Componente principal
+├── public/            # Archivos públicos
+├── index.html         # Archivo HTML principal
+└── package.json       # Dependencias y scripts
+```
 
-Copiar
-npm install
-O si usas yarn:
-bash
+## 🔧 Scripts Disponibles
 
-Contraer
+- `npm run dev`: Inicia el servidor de desarrollo
+- `npm run build`: Construye la aplicación para producción
+- `npm run preview`: Previsualiza la versión de producción localmente
 
-Ajuste
+## 🤝 Contribución
 
-Copiar
-yarn install
-Configura las fuentes de Google Fonts (si no están incluidas):
-Asegúrate de que el archivo public/index.html incluya el enlace:
-html
+1. Fork el repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-Contraer
+## 📝 Notas Adicionales
 
-Ajuste
+- La aplicación utiliza Supabase como backend, asegúrate de tener las credenciales correctamente configuradas
+- Las imágenes de los productos se almacenan en la carpeta `assets` por categorías
+- El sistema de carrito utiliza Context API para la gestión del estado global
 
-Copiar
-<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-🏃‍♂️ Ejecución del Proyecto
-Inicia el servidor de desarrollo:
-Si usas npm:
-bash
+## 📄 Licencia
 
-Contraer
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-Ajuste
+---
 
-Copiar
-npm start
-O si usas yarn:
-bash
-
-Contraer
-
-Ajuste
-
-Copiar
-yarn start
-Abre el proyecto en tu navegador:
-Visita http://localhost:3000 (o el puerto indicado en la terminal).
-🛠️ Estructura del Proyecto
-text
-
-Contraer
-
-Ajuste
-
-Copiar
-Bigotes-pizzeria/
-├── public/              # Archivos públicos (index.html, favicon, etc.)
-├── src/                 # Código fuente
-│   ├── components/      # Componentes reutilizables
-│   │   ├── Layout.tsx   # Componente de diseño general (header, footer)
-│   │   └── Home.tsx     # Página principal
-│   ├── index.css        # Estilos globales (incluye Tailwind CSS y Google Fonts)
-│   └── App.tsx          # Componente raíz de la aplicación
-├── package.json         # Dependencias y scripts
-├── tailwind.config.js   # Configuración de Tailwind CSS
-└── README.md            # Este archivo
-🎨 Tecnologías Utilizadas
-React: Biblioteca para construir interfaces de usuario.
-TypeScript: Para un desarrollo más seguro y tipado.
-Tailwind CSS: Framework de estilos para un diseño moderno y responsivo.
-React Router: Para la navegación entre páginas.
-React Slick: Para el carrusel de imágenes en la galería.
-Google Fonts: Fuentes personalizadas (Roboto y Lobster).
-Lucide React: Iconos utilizados en el header y footer.
+Desarrollado con ❤️ por Federico M. | Emanuel L.

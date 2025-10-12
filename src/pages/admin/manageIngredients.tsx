@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchIngredients, addIngredient, updateIngredient, deleteIngredient } from '../lib/supabase-functions';
+import { fetchIngredients, addIngredient, updateIngredient, deleteIngredient } from '../../lib/supabase-functions';
 import AdminHeader from './AdminHeader';
 
 const ManageIngredients = () => {

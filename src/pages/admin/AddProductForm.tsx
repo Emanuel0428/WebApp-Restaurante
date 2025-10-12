@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { addProduct, fetchIngredients, addIngredient } from '../lib/supabase-functions';
-import type { Ingredient, ProductData } from '../lib/supabase-functions';
-import AdminHeader from '../pages/AdminHeader';  // Importa el header de administrador
-import { supabase } from '../lib/supabase';
+import { addProduct, fetchIngredients, addIngredient } from '../../lib/supabase-functions';
+import type { Ingredient, ProductData } from '../../lib/supabase-functions';
+import AdminHeader from './AdminHeader';
+import { supabase } from '../../lib/supabase';
 
 const AddProductForm: React.FC = () => {
   const [formData, setFormData] = useState<ProductData>({

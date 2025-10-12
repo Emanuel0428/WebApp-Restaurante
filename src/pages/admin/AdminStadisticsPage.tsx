@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
-import AdminHeader from "../pages/AdminHeader";
+import { supabase } from "../../lib/supabase";
+import AdminHeader from "./AdminHeader";
 import { DatePicker } from "antd";
 import {
   LineChart,

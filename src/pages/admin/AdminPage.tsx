@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import AdminHeader from './AdminHeader';
-import { supabase } from '../lib/supabase';
-import { fetchIngredients, fetchInventory } from '../lib/supabase-functions';
+import { supabase } from '../../lib/supabase';
+import { fetchIngredients, fetchInventory } from '../../lib/supabase-functions';
 
 const AdminPage = () => {
   const navigate = useNavigate();

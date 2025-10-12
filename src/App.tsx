@@ -15,23 +15,23 @@ import CheckoutPage from './pages/CheckoutPage';
 import Confirmation from './pages/Confirmation';
 
 // Autenticación
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Profile from './pages/Profile';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import Profile from './pages/auth/Profile';
 
 // Panel de administración
-import AdminPage from './pages/AdminPage';
-import UserManagement from './pages/UserManagement';
-import AddProductForm from './pages/AddProductForm';
-import ManageProducts from './pages/ManageProducts';
-import ManageIngredients from './pages/manageIngredients';
-import ManageInventory from './pages/ManageInventory';
-import AdminOrdersPage from './pages/AdminOrdersPage';
-import AdminStatisticsPage from './pages/AdminStadisticsPage';
-import AdminCashHistoryPage from './pages/AdminCashHistoryPage';
-import SalesChartPage from './pages/SalesChartPage';
+import AdminPage from './pages/admin/AdminPage';
+import UserManagement from './pages/admin/UserManagement';
+import AddProductForm from './pages/admin/AddProductForm';
+import ManageProducts from './pages/admin/ManageProducts';
+import ManageIngredients from './pages/admin/manageIngredients';
+import ManageInventory from './pages/admin/ManageInventory';
+import AdminOrdersPage from './pages/admin/AdminOrdersPage';
+import AdminStatisticsPage from './pages/admin/AdminStadisticsPage';
+import AdminCashHistoryPage from './pages/admin/AdminCashHistoryPage';
+import SalesChartPage from './pages/admin/SalesChartPage';
 
-import MeseroPage from './pages/MeseroPage';
+import MeseroPage from './pages/admin/MeseroPage';
 
 // confrimación de mesa
 import TableConfirmation from './pages/TableConfirmation';

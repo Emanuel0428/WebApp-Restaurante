@@ -5,8 +5,8 @@ import {
   updateProduct,
   ProductFromDB,
   fetchIngredients
-} from '../lib/supabase-functions';
-import AdminHeader from '../pages/AdminHeader';
+} from '../../lib/supabase-functions';
+import AdminHeader from './AdminHeader';
 
 const tipoOpciones = ['pizza', 'bebida', 'postre'];
 
@@ -227,12 +227,12 @@ const ManageProducts = () => {
                           const file = e.target.files?.[0];
                           if (!file) return;
                           const filePath = `productos/${Date.now()}_${file.name}`;
-                          const { error } = await import('../lib/supabase').then(m => m.supabase.storage.from('productos').upload(filePath, file));
+                          const { error } = await import('../../lib/supabase').then(m => m.supabase.storage.from('productos').upload(filePath, file));
                           if (error) {
                             alert('Error subiendo imagen: ' + error.message);
                             return;
                           }
-                          const publicUrlData = (await import('../lib/supabase')).supabase.storage.from('productos').getPublicUrl(filePath);
+                          const publicUrlData = (await import('../../lib/supabase')).supabase.storage.from('productos').getPublicUrl(filePath);
                           if (!publicUrlData || !publicUrlData.data || !publicUrlData.data.publicUrl) {
                             alert('Error: No se pudo obtener una URL pública válida.');
                             return;
@@ -470,7 +470,7 @@ const ManageProducts = () => {
                       <button
                         onClick={async () => {
                           if (!editingProduct || !editingProduct.id_producto) return;
-                          let preciosPorTamano: Record<string, number> = {};
+                          const preciosPorTamano: Record<string, number> = {};
                           if (editingProduct.precios_por_tamano) {
                             const orden = ["Grande", "Mediana", "Pequeña"];
                             orden.forEach((key) => {

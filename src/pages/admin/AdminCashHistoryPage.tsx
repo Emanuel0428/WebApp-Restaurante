@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AdminHeader from './AdminHeader';
-import { getAllCashMovements } from '../lib/supabase-functions';
+import { getAllCashMovements } from '../../lib/supabase-functions';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Search, ArrowDownCircle, ArrowUpCircle, User as UserIcon, FileText } from 'lucide-react';
